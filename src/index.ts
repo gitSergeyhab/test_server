@@ -1,9 +1,13 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import express from 'express';
 import cors from 'cors';
 import { testDataRouter } from './routers/test-data-router';
 import bodyParser from 'body-parser';
-
 import path from 'path';
+import { sequelize } from './sequelize';
+
 
 const ALLOWED_URLS = ['http://localhost:8080'];
 const ALLOWED_METHODS = ['GET', 'POST', 'PUT', 'DELETE'];
@@ -19,18 +23,25 @@ app.use(cors({
     credentials: true
 }));
 
-app.use('/api', testDataRouter)
+app.use('/api', testDataRouter);
 
 const PORT = process.env.PORT || 5000;
 
 
 
-const start = () => {
+const start = async () => {
     try {
-        app.listen(PORT, () => console.log('start on Port: ', PORT))
+        await sequelize.authenticate();
+        await sequelize.sync();
+        console.log('DB CONNECTED');
     } catch (err) {
-        console.log('start ', {err})
+        console.log('DB ERROR');
+    }
+    try {
+        app.listen(PORT, () => console.log('start on Port: ', PORT, ' success'));
+    } catch (err) {
+        console.log('start ', {err});
     }
 }
 
-start()
+start();
