@@ -9,21 +9,22 @@ import path from 'path';
 import { sequelize } from './sequelize';
 
 
-const ALLOWED_URLS = ['http://62.217.182.231:8080'];
+// const ALLOWED_URLS = ['http://62.217.182.231:8080'];
 
-console.log({ALLOWED_URLS})
-const ALLOWED_METHODS = ['GET', 'POST', 'PUT', 'DELETE'];
+// const ALLOWED_METHODS = ['GET', 'POST', 'PUT', 'DELETE'];
 
 const app = express();
 
 app.use(express.json());
 app.use('/images', express.static(path.join(__dirname, 'files', 'images')));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors({
-    origin: ALLOWED_URLS,
-    methods: ALLOWED_METHODS,
-    credentials: true
-}));
+app.use(cors(
+    // {
+    // origin: ALLOWED_URLS,
+    // methods: ALLOWED_METHODS,
+    // credentials: true
+    // }
+));
 
 app.use('/api', testDataRouter);
 
