@@ -9,7 +9,7 @@ import path from 'path';
 import { sequelize } from './sequelize';
 
 
-const ALLOWED_URLS = ['http://localhost:8080'];
+const ALLOWED_URLS = [process.env.CLIENT_URL || 'http://62.217.182.231:8080'];
 const ALLOWED_METHODS = ['GET', 'POST', 'PUT', 'DELETE'];
 
 const app = express();
