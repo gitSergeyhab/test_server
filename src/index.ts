@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
 dotenv.config();
-
 import express from 'express';
 import cors from 'cors';
 import { testDataRouter } from './routers/test-data-router';
@@ -15,14 +14,14 @@ const ALLOWED_METHODS = ['GET', 'POST', 'PUT', 'DELETE'];
 
 const app = express();
 
-app.all('*', function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    res.header('Access-Control-Allow-Private-Network',  'true');
-    res.header('Content-Type', 'text/plain');
-    next();
-  });
+// app.all('*', function(req, res, next) {
+//     res.header('Access-Control-Allow-Origin', '*');
+//     res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+//     res.header('Access-Control-Allow-Headers', 'Content-Type');
+//     res.header('Access-Control-Allow-Private-Network',  'true');
+//     res.header('Content-Type', 'text/plain');
+//     next();
+//   });
 
 app.use(express.json());
 app.use('/images', express.static(path.join(__dirname, 'files', 'images')));

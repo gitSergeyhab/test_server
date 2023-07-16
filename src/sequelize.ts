@@ -1,8 +1,8 @@
 import { Sequelize, Dialect } from 'sequelize';
 
 const dbName = process.env.DB_NAME || 'test1';
-const dbUser = process.env.DB_USER || 'postgres';
-const dbPassword = process.env.DB_PASSWORD || '1';
+const dbUser = process.env.DB_USER || 'tester1';
+const dbPassword = process.env.DB_PASSWORD || 'tester1';
 
 const dialect = process.env.SQL_DIALECT as Dialect || 'postgres';
 const host = process.env.DB_HOST || 'localhost';
