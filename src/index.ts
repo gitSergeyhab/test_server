@@ -20,6 +20,7 @@ app.all('*', function(req, res, next) {
     res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     res.header('Access-Control-Allow-Private-Network',  'true');
+    res.header('Content-Type', 'text/plain');
     next();
   });
 
@@ -30,7 +31,7 @@ app.use(cors(
     {
     origin: ALLOWED_URLS,
     methods: ALLOWED_METHODS,
-    // credentials: true
+    credentials: true
     }
 ));
 
