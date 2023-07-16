@@ -9,15 +9,15 @@ class DataController {
             {id: 3, name: 'Noumena'},
             {id: 4, name: 'Mors Principium Est'},
         ]
-        res.status(200).json(simpleData)
+        return res.status(200).json(simpleData)
     }
 
    async getDataFromDB(req: Request, res: Response) {
         try {
             const result = await sequelize.query('SELECT id, name FROM bands;');
-            res.status(200).json(result[0])
+            return res.status(200).json(result[0])
         } catch {
-            return [{id: 666, name: 'The Beatles'}]
+            return res.status(200).json([{id: 666, name: 'The Beatles'}]) 
         }
     }
 }
